@@ -1,5 +1,5 @@
 bread x 2
-jogurt x 1
+jogurt x 2
 sugar x 1
 eggs x 7
 milk x 3
