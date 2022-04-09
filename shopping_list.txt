@@ -1,5 +1,5 @@
-bread
-jogurt
-sugar
-eggs
-milk
+bread x 2
+jogurt x 1
+sugar x 1
+eggs x 7
+milk x 3
