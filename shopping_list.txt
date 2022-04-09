@@ -2,4 +2,4 @@ bread x 2
 jogurt x 1
 sugar x 1
 eggs x 7
-milk x 3
+milk x 7
