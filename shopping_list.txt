@@ -1,5 +1,6 @@
 bread x 2
 jogurt x 2
 sugar x 1
-eggs x 7
-milk x 7
+chocolate x 7
+milk x 3
+ketchup x 1
