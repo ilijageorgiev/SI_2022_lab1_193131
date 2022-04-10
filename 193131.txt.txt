@@ -1,0 +1,195 @@
+4.  git clone https://github.com/ilijageorgiev/SI_2022_lab1_193131.git
+	- Клонира(прави копија на remote репозиториум) локално.
+    cd 'SI_2022_lab1_193131'
+	- Влегува во локален репозиториум.
+
+5.  nano shopping_list.txt 
+	- Создава нова текстуална датотека shopping_list.txt и отвара nano text editor.
+	- Додава 5 производи:
+	  	- bread
+		- jogurt
+		- sugar
+		- eggs
+		- milk
+    git add shopping_list.txt
+	- Додава датотека на сцена.
+    git commit -m "Add 5 items to the shopping list"
+	- Прави commit со порака, на датотека која е ставена на сцена, на master гранка.
+
+6.  nano shopping_list.txt
+	- Отвара nano text editor и додава количина на производите:
+		- bread x 2
+		- jogurt x 1
+		- sugar x 1
+		- eggs x 7
+		- milk x 3
+    git commit -a -m "Add quantities to the items."
+	- Додава датотека на сцена и прави commit со порака, на master гранка.(Shortcut add + commit)
+
+7.  git branch branch1
+	- Создава нова гранка branch1.
+    git branch branch2
+	- Создава нова гранка branch2.
+
+8.  git log
+	- Прикажува логови од сите commits:
+		commit a762b9a60347d345455392a66940fa38fafbfd80 (HEAD -> master, branch2, branch1)
+		Author: ilijageorgiev <ilijageorgiev@gmail.com>
+		Date:   Sat Apr 9 04:14:03 2022 +0200
+
+		    Add quantities to the items
+		
+		commit 087e045a69eae4ff6b996aee7f847e7236f0c83b
+		Author: ilijageorgiev <ilijageorgiev@gmail.com>
+		Date:   Sat Apr 9 03:48:09 2022 +0200
+
+		    Add 5 items to the shopping list
+		
+		commit 24e93b106e5e537fa1788e38c71297f0ce337d70 (origin/master, origin/HEAD)
+		Author: Ilija Georgiev <103008552+ilijageorgiev@users.noreply.github.com>
+		Date:   Thu Apr 7 23:18:09 2022 +0200
+		
+    		    Update README.md
+
+    		    Add name, surname and index.
+		
+		commit 780a4aaea8c5407cb7ec6bc6f124166ae2f02ab8
+		Author: Ilija Georgiev <103008552+ilijageorgiev@users.noreply.github.com>
+		Date:   Thu Apr 7 23:03:43 2022 +0200
+
+		    Initial commit
+		
+
+9.  git push --all
+	- Синхронизација на сите гранки со remote репозиториум.
+
+10.  git checkout branch1
+	- Префрла HEAD на branch1 гранка.
+
+11.  nano shopping_list.txt
+	- Отвара nano text editor и менува количина на производ #5 -> milk x 7
+     git commit -a -m "Change quantity of item #5"
+	- Додава датотека на сцена и прави commit со порака, на branch1 гранка.
+
+12.  git checkout master
+	- Префрла HEAD на master гранка.
+
+13.  nano shopping_list.txt
+	- Отвара nano text editor и менува количина на производ #2 -> jogurt x 2
+     git commit -a -m "Change quantity of item #2"
+	- Додава датотека на сцена и прави commit со порака, на master гранка.
+
+14.  git push --all
+	- Синхронизација на сите гранки со remote репозиториум.
+
+15.  git checkout branch2
+	- Префрла HEAD на branch2 гранка.
+
+16.  nano shopping_list.txt
+	- Отвара nano text editor и менува име на производ #4 eggs x 7 -> chocolate x 7
+     git commit -a -m "Modify item #4"
+	- Додава датотека на сцена и прави commit со порака, на branch2 гранка.
+
+17.  git log
+	- Прикажува логови од сите commits на branch2:
+		commit 07d3e961843bc77ab5ca44f76db83733053ca4a8 (HEAD -> branch2)
+		Author: ilijageorgiev <ilijageorgiev@gmail.com>
+		Date:   Sat Apr 9 05:34:20 2022 +0200
+		
+		    Modify item #4
+		
+		commit a762b9a60347d345455392a66940fa38fafbfd80 (origin/branch2)
+		Author: ilijageorgiev <ilijageorgiev@gmail.com>
+		Date:   Sat Apr 9 04:14:03 2022 +0200
+		
+		    Add quantities to the items
+		
+		commit 087e045a69eae4ff6b996aee7f847e7236f0c83b
+		Author: ilijageorgiev <ilijageorgiev@gmail.com>
+		Date:   Sat Apr 9 03:48:09 2022 +0200
+		
+		    Add 5 items to the shopping list
+		
+		commit 24e93b106e5e537fa1788e38c71297f0ce337d70
+		Author: Ilija Georgiev <103008552+ilijageorgiev@users.noreply.github.com>
+		Date:   Thu Apr 7 23:18:09 2022 +0200
+		
+		    Update README.md
+		
+		    Add name, surname and index.
+		
+		commit 780a4aaea8c5407cb7ec6bc6f124166ae2f02ab8
+		Author: Ilija Georgiev <103008552+ilijageorgiev@users.noreply.github.com>
+		Date:   Thu Apr 7 23:03:43 2022 +0200
+		
+    		    Initial commit
+		
+
+18.  git rebase -i HEAD~1 (-i == интерактивен rebase)
+	- Отвара едитор и менува pick со edit на последен commit(edit 07d3e96 Modify item #4) за промена.
+     start shopping_cart.txt
+	- Отвара постоечкa txt датотека од последен commit и додава 6-та ставка -> ketchup x 1.
+     git add shopping_list.txt
+	- Додава датотека на сцена.
+     git commit --amend
+	- Менува предходна порака со следна: "Modify item #4 and add item #6".
+     git rebase --continue
+	- Завршува rebase така што е ажуриран последен commit.
+
+19.  git log
+	- Прикажува логови од сите commits на branch2:
+		commit 2962527dbce8650f0ca8188628610a4a780c5b5c (HEAD -> branch2)
+		Author: ilijageorgiev <ilijageorgiev@gmail.com>
+		Date:   Sat Apr 9 05:34:20 2022 +0200
+		
+		    Modify item #4 and add item #6
+		
+		commit a762b9a60347d345455392a66940fa38fafbfd80 (origin/branch2)
+		Author: ilijageorgiev <ilijageorgiev@gmail.com>
+		Date:   Sat Apr 9 04:14:03 2022 +0200
+		
+		    Add quantities to the items
+		
+		commit 087e045a69eae4ff6b996aee7f847e7236f0c83b
+		Author: ilijageorgiev <ilijageorgiev@gmail.com>
+		Date:   Sat Apr 9 03:48:09 2022 +0200
+		
+		    Add 5 items to the shopping list
+		
+		commit 24e93b106e5e537fa1788e38c71297f0ce337d70
+		Author: Ilija Georgiev <103008552+ilijageorgiev@users.noreply.github.com>
+		Date:   Thu Apr 7 23:18:09 2022 +0200
+		
+    		    Update README.md
+		
+		    Add name, surname and index.
+		
+		commit 780a4aaea8c5407cb7ec6bc6f124166ae2f02ab8
+		Author: Ilija Georgiev <103008552+ilijageorgiev@users.noreply.github.com>
+		Date:   Thu Apr 7 23:03:43 2022 +0200
+		
+		    Initial commit
+		
+
+20.  git checkout master
+	- Префрла HEAD на master гранка.
+     git merge branch1
+	- Спојува гранка 'branch1' кон гранка 'master'.
+*	- Нема конфликт.
+*	- Употребена рекурзивна стратегија.('ort' стратегија)
+
+21.  git merge branch2
+	- Спојува гранка 'branch2' кон гранка 'master'.
+*	- Има конфликт.
+*	    - Конфликт решен со непроменет дел од 'branch2', а избришан дел од 'master'(HEAD) гранка.
+     git commit -a
+	- Додава на сцена shopping_list.txt и отвара VI едитор за Merge commit message.
+*	- Употребена рекурзивна стратегија.
+
+22.  git add 193131.txt.txt
+	- Додава датотека на сцена.
+     git commit -m "Add docs"
+	- Прави commit со порака, на датотека која е ставена на сцена, на master гранка.
+
+23.  git push --all
+	- Синхронизација на сите гранки со remote репозиториум.
